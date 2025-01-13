@@ -6,7 +6,10 @@ const UserList = () => {
 
   useEffect(() => {
     api.get('/users/')
-      .then(response => setUsers(response.data))
+      .then(response => {
+        console.log('Users fetched:', response.data); // Adicionando log para verificar os dados
+        setUsers(response.data);
+      })
       .catch(error => console.error('Erro ao buscar usuários:', error));
   }, []);
 

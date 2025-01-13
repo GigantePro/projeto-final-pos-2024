@@ -5,8 +5,11 @@ const AlbumList = () => {
   const [albums, setAlbums] = useState([]);
 
   useEffect(() => {
-    api.get('/albums')
-      .then(response => setAlbums(response.data))
+    api.get('/albums/')
+      .then(response => {
+        console.log('Albums fetched:', response.data); // Adicionando log para verificar os dados
+        setAlbums(response.data);
+      })
       .catch(error => console.error('Erro ao buscar álbuns:', error));
   }, []);
 

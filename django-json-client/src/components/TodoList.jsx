@@ -5,8 +5,11 @@ const TodoList = () => {
   const [todos, setTodos] = useState([]);
 
   useEffect(() => {
-    api.get('/todos')
-      .then(response => setTodos(response.data))
+    api.get('/todos/')
+      .then(response => {
+        console.log('ToDos fetched:', response.data); // Adicionando log para verificar os dados
+        setTodos(response.data);
+      })
       .catch(error => console.error('Erro ao buscar ToDos:', error));
   }, []);
 
